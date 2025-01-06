@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5000"
+    environment:
+      - FLASK_APP=app
+      - FLASK_ENV=development
+    volumes:
+      - .:/app
+      - file_storage_data:/app/file_storage.db
+
+volumes:
+  file_storage_data:
+    driver: local
+
+
